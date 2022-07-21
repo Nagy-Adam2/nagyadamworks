@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+	<META charset="UTF-8" />
+	<META name="AUTHOR" content="Nagy &Aacute;d&aacute;m" />
+	<META name="MADE" content="nagyadamworks@gmail.com" />
+	<META name="DATE" content="2018.11.24." />
+	<META http-equiv="CONTENT-LANGUAGE" content="english" />
+    <script>
+      function frissit(ujra) {
+        var chatbox;
+
+        if (window.XMLHttpRequest) {
+          chatbox = new XMLHttpRequest();
+        }
+        else {
+          chatbox = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        var idopont = new Date().getTime();
+
+        chatbox.abort();
+        chatbox.open("GET", "answer.php?ido="+idopont, true);
+        chatbox.onreadystatechange = function() {
+          if(chatbox.readyState == 4) {
+            document.getElementById('chat').innerHTML = chatbox.responseText;
+          }
+        }
+        chatbox.send(null);
+
+        if (ujra) {
+          setTimeout('frissit(true)',2000);
+        }
+      }
+
+      function enter_nyomva(e) {
+        var charCode;
+        if (e && e.which) {
+          charCode = e.which;
+        }
+        else if(window.event){
+          e = window.event;
+          charCode = e.keyCode;
+        }
+        if(charCode == 13) {
+          ajax_futtat('insert-di.php','mehet=1&szoveg='+document.getElementById('chat').value);
+          document.getElementById('chat').value='';
+          frissit(false);
+          document.getElementById('chat').focus();
+        }
+      }
+    </script>
+</head>
+<body onLoad="frissit(true)">
+<?php
+include('connection.php');
+$conn;
+Connect($conn);
+
+mysqli_query($conn,'SET NAMES utf8');
+mysqli_query($conn,"SET character_set_results=utf8");
+mysqli_set_charset($conn,'utf8');
+function answer ($conn) {
+	if($conn) {
+		$sql="SELECT * FROM message ORDER BY `ID` DESC";
+		$res=mysqli_query($conn, $sql) or die ('Incorrect instruction!');
+		echo '<div id="chat">';
+		echo '<table border=0 style="padding: 0 10px 0 10px;">';
+		echo '<tr>';
+		/*echo '<th>ID</th>';*/
+		echo '<th>Chat:</th>';
+		echo '</tr>';
+		while (($current_row=mysqli_fetch_assoc($res))!= null) {
+		echo'<tr>';
+		/*echo'<td>'.$current_row["ID"].'</td>';*/
+		echo'<td>'.$current_row["messages"].'</td>';
+		echo'</tr>';
+		}
+		echo '</table>';
+		echo '</div>';
+		mysqli_free_result($res);
+	}else{
+		die ('Failed to connect to database.');
+	}
+	mysqli_close($conn);
+}
+answer($conn);
+?>
+</body>
+</html>

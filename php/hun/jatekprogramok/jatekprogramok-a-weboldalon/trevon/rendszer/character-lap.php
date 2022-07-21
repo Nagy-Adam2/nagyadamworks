@@ -1,0 +1,108 @@
+<html lang="hu">
+<head>
+	<META charset="UTF-8" />
+	<META name="AUTHOR" content="Nagy &Aacute;d&aacute;m" />
+	<META name="MADE" content="nagyadamworks@gmail.com" />
+	<META name="DATE" content="2018.11.24." />
+	<META http-equiv="CONTENT-LANGUAGE" content="hungarian" />
+	<style type="text/css">
+	table.lap {width: 84%; color: #fffcbb; background-color: grey; border-color: #fffcbb; border-style: solid; border-width: 1px;}
+	table.lap td {border-left: 0px #fffcbb solid;  border-right: 1px #fffcbb solid; border-bottom: 0px #fffcbb solid; padding: 12px 8px;} 
+	table.lap td:last-child { border-right: 0 }
+	</style>
+    <script>
+      function frissit(ujra) {
+        var chatbox;
+
+        if (window.XMLHttpRequest) {
+          chatbox = new XMLHttpRequest();
+        }
+        else {
+          chatbox = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        var idopont = new Date().getTime();
+
+        chatbox.abort();
+        chatbox.open("GET", "character-lap.php?ido="+idopont, true);
+        chatbox.onreadystatechange = function() {
+          if(chatbox.readyState == 4) {
+            document.getElementById('lap').innerHTML = chatbox.responseText;
+          }
+        }
+        chatbox.send(null);
+
+        if (ujra) {
+          setTimeout('frissit(true)',2000);
+        }
+      }
+
+      function enter_nyomva(e) {
+        var charCode;
+        if (e && e.which) {
+          charCode = e.which;
+        }
+        else if(window.event){
+          e = window.event;
+          charCode = e.keyCode;
+        }
+        if(charCode == 13) {
+          ajax_futtat('character-lap.php','mehet=1&szoveg='+document.getElementById('lap').value);
+          document.getElementById('lap').value='';
+          frissit(false);
+          document.getElementById('lap').focus();
+        }
+      }
+    </script>
+</head>
+<body onLoad="frissit(true)">
+<?php
+$conn=mysqli_connect('localhost','nagyadamwork') or die ("Faulty connection!");
+mysqli_query($conn,'SET NAMES utf8');
+mysqli_query($conn,"SET character_set_results=utf8");
+mysqli_set_charset($conn,'utf8');
+if (mysqli_select_db($conn,'nagyadamwork')) {
+		$sql="SELECT * FROM characters_page LIMIT 1";
+		$res=mysqli_query($conn, $sql) or die ('Mistake instruction!');
+		echo '<div id="lap">';
+		echo '<table class="lap">';
+		while (($current_row=mysqli_fetch_assoc($res))!= null) {
+		echo '<tr>';
+		echo '<td>N&eacute;v</td>';
+		echo '<td>Szint</td>';
+		echo '<td>Tapasztalati_pont</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>'.$current_row["chara_name"].'</td>';
+		echo '<td>'.$current_row["chara_level"].'</td>';
+		echo '<td>'.$current_row["chara_exp_point"].'</td>';
+		echo '</tr>';
+		echo '</table>';
+		echo '<table class="lap">';
+		echo '<tr>';
+		echo '<td>Er&ocirc;</td>';
+		echo '<td>'.$current_row["chara_strength"].'</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>&Uuml;gyess&eacute;g</td>';
+		echo '<td>'.$current_row["chara_dexterity"].'</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>Intelligencia</td>';
+		echo '<td>'.$current_row["chara_intelligence"].'</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td>&Eacute;leter&ocirc;</td>';
+		echo '<td>'.$current_row["chara_vitality"].'</td>';
+		echo '</tr>';
+		}
+		echo '</table>';
+		echo '</div>';
+		mysqli_free_result($res);
+	}else{
+		die ('Failed to connect to database.');
+	}
+	mysqli_close($conn);
+?>
+</body>
+</html>

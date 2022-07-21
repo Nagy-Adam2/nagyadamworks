@@ -1,0 +1,101 @@
+/**
+ * CONTENTS
+ *
+ * LAYOUT
+ * Elements.............Rules for the container and items.
+ * Modifiers............Media queries for the layout.
+ *
+ * WHITESPACES
+ * Whitespaces..........Whitespaces between items.
+ *
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #ELEMENTS
+\*------------------------------------*/
+
+.main-container {
+  display:               grid;
+  grid-template-areas: 
+    "header header header"
+    "marquee marquee marquee"
+	"main main carousel"
+    "main main sidebar"
+    "footer footer footer";
+  grid-template-columns: 130px 1fr 280px;
+  grid-template-rows:    auto auto auto 1fr auto;
+}
+
+
+.header     { grid-area: header; }
+.marquee     { grid-area: marquee; }
+.main       { grid-area: main; }
+.carousel   { grid-area: carousel; }
+.sidebar    { grid-area: sidebar; }
+.footer     { grid-area: footer; }
+
+
+
+
+
+/*------------------------------------*\
+  #MODIFIERS
+\*------------------------------------*/
+
+@media (max-width: 992px) {
+  .main-container {
+    grid-template-areas: 
+      "header header"
+      "marquee marquee"
+	  "main carousel"
+      "main sidebar"
+      "footer footer";
+    grid-template-columns: auto 280px;
+    grid-template-rows:    auto auto auto 1fr auto;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .main-container {
+    grid-template-areas: 
+    "header"
+    "marquee"
+    "main"
+	"carousel"
+    "sidebar"
+	"footer";
+    grid-template-columns: 100%;
+    grid-template-rows:    auto auto auto auto 1fr auto;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #WHITESPACES
+\*------------------------------------*/
+
+.main-container {
+  grid-gap: .7em;
+}
+
+
+@media (max-width: 776px) {
+  .main-container {
+    grid-gap: 2.3em;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .main-container {
+    grid-gap: 1.2em;
+  }
+}

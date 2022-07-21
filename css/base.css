@@ -1,0 +1,625 @@
+/**
+ * OVERVIEW
+ *
+ * This project is separated to the following style sheets:
+ *
+ * normalize.min.css....CSS reset.
+ * base.css.............Global rules and helpers.
+ * layout.css...........CSS rules that control the layout of the page.
+ * components.css.......Own CSS for the components that build up the page.
+ */
+
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Variables........................Globally-available variables.
+ * Box-sizing.......................Better default `box-sizing`.
+ * Margins..........................Top and bottom margins global values.
+ * Paddings.........................In all directions paddings of global values.
+ *
+ * BASE STYLES
+ * Base font........................Base font style.
+ * Base background-image............Base background-image.
+ * Navigation.......................Structure of buttons on the navigation link.
+ * Marquee..........................The marquee with a block look.
+ * Headings.........................H2, H3 styles.
+ * Sidebar..........................The sidebar with a inline-block look.
+ * Footer...........................The footer with a flex look and middle element.
+ *
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #VARIABLES
+\*------------------------------------*/
+
+
+:root {
+  --blue:                     #007bff;
+  --indigo:                   #6610f2;
+  --purple:                   #6f42c1;
+  --pink:                     #e83e8c;
+  --red:                      #dc3545;
+  --orange:                   #fd7e14;
+  --yellow:                   #ffc107;
+  --green:                    #28a745;
+  --teal:                     #20c997;
+  --cyan:                     #17a2b8;
+  --white:                    #fff;
+  --gray:                     #6c757d;
+  --gray-dark:                #343a40;
+  --primary:                  #007bff;
+  --secondary:                #6c757d;
+  --success:                  #28a745;
+  --info:                     #17a2b8;
+  --warning:                  #ffc107;
+  --danger:                   #dc3545;
+  --light:                    #f8f9fa;
+  --dark:                     #343a40;
+  --breakpoint-min-xs:        320px;
+  --breakpoint-xs:            480px;
+  --breakpoint-sm:            576px;
+  --breakpoint-md:            768px;
+  --breakpoint-lg:            992px;
+  --breakpoint-xl:            1200px;
+  --font-family-sans-serif:   -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace:    SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-first:        'Arial';
+  --font-family-second:       'Segoe UI';
+  --primary-color:            #6bf56b;
+  --secondary-color:          #0c26b2;
+  --primary-font-color:       #0909bb;
+  --secondary-font-color:     #ffffff;
+  --bg-primary-color:         #add8e6;
+  --bg-secondary-color:       #90ee90;
+  --nav-link-primary-color:   #ffbb22;  
+  --nav-link-secondary-color: #52af52;
+
+  --primary-color:            #6bf56b;
+  --secondary-color:          #0c26b2;
+  --primary-font-color:       #00008b;
+  --secondary-font-color:     #373737;
+  --bg-primary-color:         #add8e6;
+  --bg-secondary-color:       #90ee90;
+  --nav-link-primary-color:   #d3d3d3;  
+  --nav-link-secondary-color: #52af52;
+}
+
+
+/*
+sotet:   #62b38d
+vilagos: #6CC49B
+kiemelt: #FFBB22
+*/
+
+
+
+
+
+/*------------------------------------*\
+  #BOX-SIZING
+\*------------------------------------*/
+
+
+* {
+  margin:  0; 
+  padding: 0; 
+  border:  0; 
+  outline: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #MARGINS
+\*------------------------------------*/
+
+
+.main, 
+.carousel,
+.sidebar
+{
+  margin: .5em 0;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #PADDINGS
+\*------------------------------------*/
+
+
+.main,
+.footer {
+  padding: 15px;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #BASE FONT
+\*------------------------------------*/
+
+
+ /**
+ * 1) Specify the minimum, current minimum values ​​for the title bar font size 
+ * when resizing the window.
+ *
+ */
+
+ .main-container {
+  font-size:   min(3.2vw, 14px); /* [1] */
+  font-family: "Raleway", sans-serif;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #BASE BACKGROUND-IMAGE
+\*------------------------------------*/
+
+
+.main-container {
+  background-image:      URL('../assets/images/background.jpg');
+  background-color:      #cce1fe;
+  background-repeat:     repeat;
+  background-attachment: fixed;
+}
+
+.main-cont-game-programs {
+  background-image:      URL('../assets/images/background-game-programs.jpg');
+}
+
+.main-cont-my-videos {
+  background-image:      URL('../assets/images/background-my-videos.jpg');
+}
+
+
+
+
+
+/*------------------------------------*\
+  #NAVIGATION
+\*------------------------------------*/
+
+
+.navigation {
+  width: 100%;
+  color: #ffffff;
+}
+
+
+  .navbar {
+    width:  95%;
+    margin: 0 auto;
+  }
+
+
+  .clear:before, 
+  .clear:after { 
+    content: " "; 
+    display: table; 
+  }
+
+
+  .clear:after { 
+    clear: both; 
+  }
+
+
+    .logo {
+      display:     inline-block;
+      font-size:   30px;
+      font-weight: bold;
+      float:       left;
+    }
+  
+  
+    .logo img {
+      width: 100%;
+    }
+  
+  
+    .menu-toggle {
+      display: none;
+    }
+
+
+    .menu ul {
+      text-align: left;
+      float:      right;
+    }
+
+
+    .menu ul li {
+      float:            left;
+      list-style:       none;
+      border-left:      2px solid #62b38d;
+      background-color: #6CC49B;
+    }
+
+
+    .menu ul li:first-child { 
+      border: 0 
+    }
+
+
+    .menu ul li:last-child { 
+      border-left: 2px solid #62b38d;
+    }
+
+
+    .menu ul ul li:last-child { 
+      border: 0;
+    }
+
+
+    .menu li a,
+    .open-submenu1,
+    .open-submenu2 {
+      cursor:     pointer;
+      position:   relative;
+      display:    block;
+      padding:    16px 20px;
+      transition: background-color .3s;
+    }
+
+    .langue li a {
+      padding: 3.8px 20px;
+    }
+
+
+    .menu li a:hover,
+    .open-submenu1:hover,
+    .open-submenu1.active,
+    .open-submenu2:hover,
+    .open-submenu2.active,
+    .menu-toggle.active {
+      background: #FFBB22;
+      transition: background-color .5s;
+    }
+
+
+    .menu ul ul {
+      display:    none;
+      float:      none;
+      position:   absolute;
+      background: #FFBB22;
+    }
+
+
+    .menu ul ul li {
+      float:  none;
+      border: 0;
+    }
+
+
+    .menu ul ul a:hover {
+      background-color: #62b38d;
+      transition:       background-color .3s;
+    }
+
+
+    .activeg {
+      background-color: #808080;
+    }
+
+
+    a { 
+      text-decoration: none;
+    }
+
+
+    .white { 
+      color: #ffffff; 
+    }
+
+
+    .arrow {
+      display:        inline-block;
+      width:          0;
+      height:         0;
+      vertical-align: middle;
+      margin-left:    4px;
+    }
+
+
+    .arrow.down {
+      border-top:   4px solid #ffffff;
+      border-right: 4px solid transparent;
+      border-left:  4px solid transparent;
+    }
+
+
+    .arrow.up {
+      border-bottom: 4px solid #ffffff;
+      border-right:  4px solid transparent;
+      border-left:   4px solid transparent;
+    }
+
+
+@media (max-width: 992px) {
+
+  .logo {
+    display:  inline-block;
+    position: relative;
+    width:    28%;
+  }
+
+
+  .logo img {
+    display: inline-block;
+    width: min(12rem, 60%);
+  }
+
+
+  .langue {
+    display: inline-block;
+    float:   right;
+    width:   71%;
+  }
+
+
+  .menu li a,
+  .open-submenu1,
+  .open-submenu2,
+  .langue li a {
+    padding: 14px 20px;
+  }
+
+
+  .menu ul {
+    text-align: center;
+  }
+
+
+  .menu > ul { 
+    float: left; 
+    width: 100%; 
+  }
+
+
+  .menu ul li { 
+    width:  100%; 
+    border: 0; 
+  }
+
+
+  .menu ul ul { 
+    position:   static; 
+    background: transparent; 
+  }
+
+
+  .menu li a,
+  .open-submenu1,
+  .open-submenu2 {
+    background-color: #62b38d;
+    margin:           2px 0 0 0; 
+  }
+
+
+  .menu li:last-child { 
+    margin: 0 0 15px 0; 
+  }
+
+
+  .menu ul ul a { 
+    background: transparent; 
+  }
+
+
+  .menu ul ul a:hover { 
+    background-color: #FFBB22; 
+  }
+
+
+  .menu ul li:last-child { 
+    border: 0;
+  }
+
+
+  .activeg,
+  ul li a.activeg {
+    background-color: #808080;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .logo {
+    position: relative;
+  }
+
+
+  .logo img {
+    width: min(12rem, 60%);
+  }
+
+  
+  .langue {
+    display: block;
+    width: 100%;
+  }
+
+
+  .menu li a,
+  .open-submenu1,
+  .open-submenu2,
+  .langue li a {
+    padding:    14px 20px;
+  }
+
+
+  .menu { 
+    display: none; 
+    clear:   both; 
+  }
+
+
+  .menu-toggle {
+    display:          inline-block;
+    cursor:           pointer;
+    float:            right;
+    padding:          12px;
+    margin:           10px 0;
+    background-color: #62b38d;
+    transition:       background-color .5s;
+  }
+
+
+  .icon-bar { 
+    background-color: #ffffff;
+    display:          block;
+    width:            22px;
+    height:           2px;
+  }
+
+
+  .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+
+
+  .menu > ul { 
+    float: left; 
+    width: 100%; 
+  }
+
+
+  .menu ul li { 
+    width:  100%; 
+    border: 0; 
+  }
+
+
+  .menu ul ul { 
+    position:   static; 
+    background: transparent; 
+  }
+
+
+  .menu li a,
+  .open-submenu1,
+  .open-submenu2 {
+    background-color: #62b38d;
+    margin:           2px 0 0 0; 
+  }
+
+
+  .menu li:last-child { 
+    margin: 0 0 15px 0; 
+  }
+
+
+  .menu ul ul a { 
+    background: transparent; 
+  }
+
+
+  .menu ul ul a:hover { 
+    background-color: #FFBB22; 
+  }
+
+
+  .menu ul li:last-child { 
+    border: 0;
+  }
+
+
+  .activeg,
+  ul li a.activeg {
+    background-color: #808080;
+  }
+
+}
+
+
+
+
+
+/*------------------------------------*\
+  #MARQUEE
+\*------------------------------------*/
+
+
+.marquee {
+  display:   block;
+  font-size: 24px;
+  padding:   15px 0 10px 0;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #HEADINGS
+\*------------------------------------*/
+
+
+ /**
+ * Extend `.main-title--fn-weight-size {}` in components.css.
+ */
+ 
+ /**
+ * 1) Specify the minimum, current minimum values ​​for the title bar font size 
+ * when resizing the window.
+ *
+ */
+
+ .main-title {
+  display: block; 
+  margin:  min(7vh, 2.75rem) 0 1.05rem; /* [1] */
+}
+
+
+
+
+
+/*------------------------------------*\
+  #SIDEBAR
+\*------------------------------------*/
+
+
+ /**
+ * Extend `.sidebar--outer-part {}` in components.css.
+ */
+
+.sidebar {
+  display: inline-block;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #FOOTER
+\*------------------------------------*/
+
+
+ /**
+ * Extend `.footer--outer-part {}` in components.css.
+ */
+
+.footer {
+  display:         flex;
+  justify-content: center;
+}

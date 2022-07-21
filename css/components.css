@@ -1,0 +1,357 @@
+/**
+ * CONTENTS
+ *
+ * MARQUEE
+ *
+ * MAIN FONT-COLOR
+ *
+ * HEADINGS FONT-WEIGHT-AND-SIZE
+ *
+ * IMAGE-ANIMATION
+ *
+ * SIDEBAR
+ *
+ * FOOTER
+ *
+ * CAROUSEL-JQUERY
+ *
+ * DISPATCH VAGY KULDES
+ *
+ * BUTTON START
+ *
+ * EGYÉB
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #MARQUEE
+\*------------------------------------*/
+
+
+/**
+ * These rules extend `.margqee {}` in base.css.
+ */
+
+.marquee--outer-part {
+  background-color: var(--bg-primary-color);
+  color:            var(--secondary-font-color);
+  font-weight:      bold;
+  border-top:       solid 4px var(--secondary-font-color);
+  border-bottom:    solid 4px var(--secondary-font-color);
+}
+
+
+
+
+
+/*------------------------------------*\
+  #MAIN FONT-COLOR
+\*------------------------------------*/
+
+
+/**
+ * These rules extend `.main {}` in base.css.
+ */
+
+.main--font-color {
+  color: var(--primary-font-color);
+}
+
+
+
+
+
+/*------------------------------------*\
+  #HEADINGS FONT-WEIGHT-AND-SIZE
+\*------------------------------------*/
+
+
+/**
+ * These rules extend `.main-title {}` in base.css.
+ */
+ 
+  /**
+ * 1) Specifying the minimum, current, maximum values ​​of title bar font size. 
+ *
+ */
+
+.main-title--fn-weight-size {
+  font-size:   clamp(28px, 5vw, 46px); /* [1] */
+  font-weight: bold;
+  text-align:  center;
+}
+
+
+
+
+	
+/*------------------------------------*\
+  #IMAGE-ANIMATION
+\*------------------------------------*/	
+
+
+/**
+ * The images on the page can have two different states:
+ *
+ * A) A regular image with the base size and no shadow.
+ * B) A hover image with an increased size and a shadow.
+ *
+ */
+
+/**
+ * 1) These properties ensure that the image is alone.
+ * 2) When an image has hovered over, a transition is applied:
+ *   - to the change of every property of the specific image;
+ *   - taking 0.5 second;
+ *   - starting quickly and ending slowly;
+ *   - being delayed by 0.1 second.
+ * 3) When an image has hovered over, its size increases by one-tenth.
+ * 4) When an image has hovered over, it gets a shadow with:
+ *   - a horizontal offset of 5 pixels;
+ *   - a vertical offset of 10 pixels;
+ *   - no spread;
+ *   - grey color.
+ */
+	
+.image {
+  display:        block; /* [1] */
+  vertical-align: top; /* [1] */
+  margin:         20px 5px 20px 5px;
+  height:         400px;
+  text-align:     center;
+  cursor:         default;
+  transition:     all .5s ease-out .1s; /* [2] */
+}
+
+  .image:hover {
+    box-shadow: 3px 6px 3px 0 grey; /* [3] */
+    transform:  scale(1.1); /* [4] */
+  }
+	
+@media screen and (max-width: 992px) {
+  .image {
+    height: 300px;
+  }
+}	
+
+
+@media screen and (max-width: 576px) {
+  .image {
+    height: 200px;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #SIDEBAR
+\*------------------------------------*/
+
+
+/**
+ * These rules extend `.sidebar {}` in base.css.
+ */
+
+.sidebar--outer-part {
+  background-color: var(--bg-secondary);
+  color:            var(--secondary-font-color);
+}
+
+
+
+
+
+/*------------------------------------*\
+  #FOOTER
+\*------------------------------------*/
+
+
+/**
+ * These rules extend `.footer {}` in base.css.
+ */
+
+.footer--outer-part {
+  background-color: var(--bg-primary-color);
+  color:            var(--secondary-font-color);
+}  
+
+
+
+
+
+/*------------------------------------*\
+  #CAROUSEL-JQUERY
+\*------------------------------------*/
+
+
+div.carosmki {
+  display: none;
+}
+
+
+div.carouselmpho {
+  display: none;
+}
+
+
+.headi1 {
+  font-size: 16px;
+  position:  relative;
+  top:       92px;
+  left:      88px;	
+  cursor:    default;
+}
+
+
+@media screen and (max-width: 992px) {
+  div.carousel {
+    display:         flex;
+    justify-content: center;
+  }
+
+
+  div.carosmki {
+    display: block;
+    width:   380px;
+  }
+
+
+  .headi1 {
+    font-size: 8px;
+    position:  relative;
+    top:       45px;
+    left:      58px;
+    cursor:    default;
+  }
+}
+
+	
+	
+@media screen and (max-width: 576px) {
+  div.carosmki {
+    display: none;
+  }
+
+
+  div.carouselmpho {
+    display: block;
+  }
+
+
+  .headi1 {
+    font-size: 8px;
+    position:  relative;
+    top:       45px;
+    left:      24px;
+    cursor:    default;
+  }
+}
+
+
+/*------------------------------------*\
+  #DISPATCH VAGY KULDES
+\*------------------------------------*/
+
+
+input.right {
+  position: absolute;
+  right:    40px;
+}
+
+textarea {
+  width:  95%;
+  height: 50px;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #BUTTON START
+\*------------------------------------*/
+
+
+button.start {
+  color:            #fffcbb;
+  background-color: #8B4513;
+  border:           2px solid #fffcbb; 
+  padding:          0px 5px; 
+  cursor:           pointer;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #EGYÉB
+\*------------------------------------*/
+
+
+.stylish {
+  border:     solid 2px #b7ddf2;
+  background: #ebf4fb;
+}
+
+.stylish h1 {
+  font-size:     14px;
+  font-weight:   bold;
+  margin-bottom: 8px;	
+}
+
+.stylish p {
+  font-size:      11px;
+  color:          #666666;
+  margin-bottom:  20px;
+  border-bottom:  solid 1px #b7ddf2;
+  padding-bottom: 10px;	
+}
+
+.stylish label {
+  display:     block;
+  font-weight: bold;
+  text-align:  right;
+  width:       140px;
+  float:       left;	
+}
+
+.stylish .small {
+  color:       #666666;
+  display:     block;
+  font-size:   11px;
+  font-weight: normal;
+  text-align:  right;
+  width:       140px;	
+}
+
+.stylish input {
+  float:     left;
+  font-size: 12px;
+  padding:   4px 2px;
+  border:    solid 1 px #aacfe4;
+  width:     200px;
+  margin:    2px 0 20px 10px;	
+}
+
+.stylish button {
+  margin-left: 150px;
+  width:       125px;
+  height:      31px;
+  background:  #666666;
+  text-align:  center;
+  line-height: 31px;
+  color:       #FFFFFF;
+  font-size:   11px;
+  font-weight: bold;
+  margin:      2px 0 20px 10px;
+  cursor:      pointer;
+}
+
+@media(max-width:992px) {	}
+@media(max-width:576px) {	}
